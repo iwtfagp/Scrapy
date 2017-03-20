@@ -9,9 +9,9 @@ class AppleCrawler(CrawlSpider):
 	name = 'apple'
 	start_urls = ['http://www.appledaily.com.tw/realtimenews/section/new/']
 	rules = [
-    	    Rule(LinkExtractor(allow=('/realtimenews/section/new/[1-3]$')), callback='parse_list', follow='True')
+    	#Rule(LinkExtractor(allow=('/realtimenews/section/new/[1-3]$')), callback='parse_list', follow='True')
 	    #if you want get all news from apple daily news.
-	    #Rule(LinkExtractors(allow('/realtimenews/section/new/[1-3]$')), callback='parse_list', follow='True')
+	    Rule(LinkExtractor(allow=('/realtimenews/section/new/.')), callback='parse_list', follow='True')
 	]
 	def parse_list(self, response):
 	    res = BeautifulSoup(response.body)
